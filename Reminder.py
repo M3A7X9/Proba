@@ -26,6 +26,16 @@ def set():
             mb.showerror("Ошибка", "Неверный формат времени")
 
 
+def check():
+    global t
+    if t:
+        now = time.time()
+        if now >= t:
+            play_snd()
+            t = None
+    window.after(10000, check)
+
+
 window = Tk()
 window.title("Напоминание")
 
