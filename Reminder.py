@@ -7,6 +7,7 @@ import time
 
 
 t = None
+music = False
 
 def set():
     global t
@@ -17,7 +18,7 @@ def set():
             minute = int(rem.split(":")[1])
             now = datetime.datetime.now()
             print(now)
-            dt = now.replace(hour=hour, minute=minute, second=0, microsecond=0))
+            dt = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
             print(dt)
             t = dt.timestamp()
             print(t)
