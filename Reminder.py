@@ -22,6 +22,7 @@ def set():
             print(dt)
             t = dt.timestamp()
             print(t)
+            text = sd.askstring("Текст напоминания", "Введите текст напоминания.")
             label.config(text=f"Напоминание установлено на: {hour:02}:{minute:02}")
         except ValueError:
             mb.showerror("Ошибка", "Неверный формат времени")
