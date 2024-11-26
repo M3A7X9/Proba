@@ -17,7 +17,7 @@ def set():
             minute = int(rem.split(":")[1])
             now = datetime.datetime.now()
             print(now)
-            dt = now.replace(hour=hour, minute=minute)
+            dt = now.replace(hour=hour, minute=minute, second=0, microsecond=0))
             print(dt)
             t = dt.timestamp()
             print(t)
@@ -37,9 +37,19 @@ def check():
 
 
 def play_snd():
+    global music
+    music = True
     pygame.mixer.init()
     pygame.mixer.music.load("reminder.mp3")
     pygame.mixer.music.play()
+
+
+def stop_music():
+    global music
+    if music:
+        pygame.mixer.music.stop()
+        music = False
+    label.config(text="Установить новое напоминание")
 
 
 window = Tk()
@@ -48,7 +58,10 @@ window.title("Напоминание")
 label = Label(text="Напоминание", font=("Arial", 15))
 label.pack(pady=10)
 set_button = Button(text="Установить напоминание", command=set)
-set_button.pack()
+set_button.pack(pady=10)
+
+stop_button = Button(text="Остановить музыку", command=stop_music)
+stop_button.pack(pady=10)
 
 check()
 window.mainloop()
